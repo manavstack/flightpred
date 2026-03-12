@@ -18,7 +18,8 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'flight_price_analyser_super_secret_key_2026';
 
 // Middleware
-app.use(cors());
+// Allow all origins for production Vercel frontend
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 // Request logging
