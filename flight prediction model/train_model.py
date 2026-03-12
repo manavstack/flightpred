@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-from sklearn.ensemble import RandomForestRegressor
+from xgboost import XGBRegressor
 import joblib
 import numpy as np
 import time
@@ -36,12 +36,12 @@ def train_and_save_model():
         ]
     )
 
-    # Random Forest Regressor
-    # Increased n_estimators and max_depth for better precision accuracy.
-    # We removed max_samples constraint to train on the entire dataset.
-    model = RandomForestRegressor(
-        n_estimators=100, 
-        max_depth=20, 
+    # XGBoost Regressor
+    # Extremely low file size compared to Random Forest and high accuracy
+    model = XGBRegressor(
+        n_estimators=150, 
+        max_depth=8, 
+        learning_rate=0.1,
         n_jobs=-1, 
         random_state=42
     )

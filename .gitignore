@@ -26,7 +26,6 @@ dist-ssr
 # ML Models & Python Environments
 venv/
 flight prediction model/venv/
-*.pkl
 flight prediction model/data/
 __pycache__/
 
