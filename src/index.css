@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1e3b8a;
+  --color-primary-dark: #165268;
+  --color-background-light: #f6f6f8;
+  --color-accent-blue: #1E3A8A;
+  --color-accent-indigo: #4F46E5;
+  --color-emerald-ai: #10b981;
+
+  --font-display: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  --shadow-soft: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(30, 109, 138, 0.15);
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* SVG chart styles */
+.chart-line-solid {
+  stroke-dasharray: 0;
+}
+
+.chart-line-dotted {
+  stroke-dasharray: 4 4;
+}
+
+/* Custom scrollbar hiding */
+.no-scrollbar::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar,
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom iOS switch styling */
+.ios-switch:checked+.ios-switch-label {
+  background-color: #1e3b8a;
+}
+
+.ios-switch:checked+.ios-switch-label::after {
+  transform: translateX(100%);
+}
+
+/* Pulse animation for AI elements */
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite ease-in-out;
+}
+
+/* Material Symbols filled variant */
+.fill-1 {
+  font-variation-settings: "FILL" 1;
+}

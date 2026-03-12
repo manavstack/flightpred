@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Price Trend &amp; AI Prediction</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e3b8a",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121620",
+                        "emerald-accent": "#10b981",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .chart-line-solid {
+            stroke-dasharray: 0;
+        }
+
+        .chart-line-dotted {
+            stroke-dasharray: 4 4;
+        }
+
+        @keyframes pulse-soft {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite ease-in-out;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex justify-center">
+    <div
+        class="relative w-full max-w-[430px] h-full min-h-screen bg-background-light dark:bg-background-dark flex flex-col overflow-hidden shadow-2xl">
+        <div
+            class="flex items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50 p-4 justify-between border-b border-slate-200 dark:border-slate-800">
+            <a href="dashboard.html"
+                class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                <span class="material-symbols-outlined">arrow_back_ios_new</span>
+            </a>
+            <div class="flex flex-col items-center">
+                <h2 class="text-slate-900 dark:text-slate-100 text-sm font-bold leading-tight tracking-tight">BOM → GOI
+                </h2>
+                <p class="text-slate-500 text-[10px] font-medium uppercase tracking-widest">Price Insights</p>
+            </div>
+            <div class="flex w-10 items-center justify-end">
+                <button class="text-slate-900 dark:text-slate-100">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+            </div>
+        </div>
+        <div class="flex-1 overflow-y-auto pb-24">
+            <div class="px-6 pt-6 text-center">
+                <div
+                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-accent/10 text-emerald-accent text-xs font-bold mb-2">
+                    <span class="material-symbols-outlined text-sm">trending_down</span>
+                    Lowest Price in 3 Months
+                </div>
+                <h3 class="text-slate-900 dark:text-slate-100 text-4xl font-extrabold tracking-tight">₹4,250</h3>
+                <p class="text-slate-500 text-sm font-medium mt-1">Current Roundtrip Fare</p>
+            </div>
+            <div class="mt-8 px-4 relative">
+                <div class="flex justify-center mb-6">
+                    <div
+                        class="flex h-9 w-64 items-center justify-center rounded-lg bg-slate-200/50 dark:bg-slate-800 p-1">
+                        <button class="flex-1 text-xs font-bold py-1.5 rounded-md text-slate-500">7D</button>
+                        <button
+                            class="flex-1 text-xs font-bold py-1.5 rounded-md bg-white dark:bg-slate-700 text-primary shadow-sm">30D</button>
+                        <button class="flex-1 text-xs font-bold py-1.5 rounded-md text-slate-500">90D</button>
+                    </div>
+                </div>
+                <div class="relative h-48 w-full px-2">
+                    <svg class="w-full h-full overflow-visible" viewBox="0 0 400 150">
+                        <line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0"
+                            x2="400" y1="30" y2="30"></line>
+                        <line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0"
+                            x2="400" y1="70" y2="70"></line>
+                        <line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0"
+                            x2="400" y1="110" y2="110"></line>
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#1e3b8a" stop-opacity="0.2"></stop>
+                                <stop offset="100%" stop-color="#1e3b8a" stop-opacity="0"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,110 L40,105 L80,120 L120,90 L160,95 L200,80 L240,85 L280,70 L280,150 L0,150 Z"
+                            fill="url(#chartGradient)"></path>
+                        <path class="chart-line-solid"
+                            d="M0,110 L40,105 L80,120 L120,90 L160,95 L200,80 L240,85 L280,70" fill="none"
+                            stroke="#1e3b8a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+                        <path class="chart-line-dotted" d="M280,70 L320,60 L360,40 L400,35" fill="none" stroke="#10b981"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+                        <circle cx="280" cy="70" fill="#1e3b8a" r="5" stroke="white" stroke-width="2"></circle>
+                        <rect class="shadow-sm filter drop-shadow-md" fill="white" height="30" rx="8" width="60" x="250"
+                            y="20"></rect>
+                        <text fill="#1e3b8a" font-size="10" font-weight="bold" text-anchor="middle" x="280"
+                            y="40">₹4,250</text>
+                    </svg>
+                    <div class="flex justify-between mt-2 px-1">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase">Last Month</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-[10px] font-bold text-primary uppercase">Today</span>
+                            <div class="w-px h-2 bg-primary"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-emerald-accent uppercase">Diwali Forecast</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 mt-8">
+                <div class="glass-panel rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-accent/20 rounded-full blur-3xl"></div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-primary p-2 rounded-lg text-white shadow-lg shadow-primary/30">
+                                <span class="material-symbols-outlined text-xl animate-pulse-soft">psychology</span>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-900 font-bold text-base leading-none">AI Forecast</h4>
+                                <p class="text-slate-500 text-xs mt-1">Diwali Season Analysis</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-emerald-accent text-white px-3 py-1.5 rounded-lg text-xs font-black tracking-wider shadow-md">
+                            BUY NOW
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                            Book now for Diwali! Prices are <span class="text-emerald-accent font-bold">₹1,200
+                                lower</span> than usual. We predict a <span class="text-primary font-bold">18%
+                                surge</span> as the festival approaches.
+                        </p>
+                        <div>
+                            <div class="flex justify-between items-end mb-1.5">
+                                <span class="text-slate-500 text-xs font-bold uppercase tracking-tight">Confidence
+                                    Score</span>
+                                <span class="text-emerald-accent text-sm font-black">92%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div
+                                    class="h-full bg-gradient-to-r from-primary to-emerald-accent w-[92%] rounded-full shadow-inner">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 pt-2">
+                            <div
+                                class="flex-1 bg-white/50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
+                                <p class="text-slate-400 text-[10px] font-bold uppercase">Lowest Price</p>
+                                <p class="text-slate-900 dark:text-slate-100 font-extrabold text-lg">₹3,800</p>
+                            </div>
+                            <div
+                                class="flex-1 bg-white/50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-700">
+                                <p class="text-slate-400 text-[10px] font-bold uppercase">Average Fare</p>
+                                <p class="text-slate-900 dark:text-slate-100 font-extrabold text-lg">₹5,450</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 mt-6">
+                <div
+                    class="flex items-center justify-between bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary">notifications_active</span>
+                        <div>
+                            <p class="text-slate-900 dark:text-slate-100 font-bold text-sm">Track this trip</p>
+                            <p class="text-slate-500 text-xs">Alert me if price drops below ₹4,000</p>
+                        </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input checked="" class="sr-only peer" type="checkbox" />
+                        <div
+                            class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div
+            class="absolute bottom-0 left-0 right-0 flex border-t border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-background-dark/90 backdrop-blur-lg px-4 pb-8 pt-3">
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="flight_search.html">
+                <span class="material-symbols-outlined text-[24px]">search</span>
+                <p class="text-[10px] font-bold tracking-tight">Search</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+                <span class="material-symbols-outlined text-[24px]">flight_takeoff</span>
+                <p class="text-[10px] font-bold tracking-tight">Trips</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+                <span class="material-symbols-outlined text-[24px] fill-1">trending_up</span>
+                <p class="text-[10px] font-bold tracking-tight">Predictions</p>
+            </a>
+            <a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+                <span class="material-symbols-outlined text-[24px]">person</span>
+                <p class="text-[10px] font-bold tracking-tight">Profile</p>
+            </a>
+        </div>
+        <div class="absolute bottom-24 left-0 right-0 px-6">
+            <button
+                class="w-full bg-primary text-white py-4 rounded-xl font-bold text-base shadow-xl shadow-primary/20 flex items-center justify-center gap-2">
+                View Best Flight Deals
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Advanced Flight Search Results</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e3b8a",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121620",
+                        "emerald-ai": "#10b981",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="h-12 w-full bg-primary flex items-center justify-between px-6 text-white text-xs font-semibold">
+        <span>9:41</span>
+        <div class="flex gap-1.5">
+            <span class="material-symbols-outlined text-[14px]">signal_cellular_4_bar</span>
+            <span class="material-symbols-outlined text-[14px]">wifi</span>
+            <span class="material-symbols-outlined text-[14px]">battery_very_low</span>
+        </div>
+    </div>
+    <header class="bg-primary pt-2 pb-6 px-4 sticky top-0 z-50 shadow-lg shadow-primary/10">
+        <div class="flex items-center gap-3 mb-6">
+            <a href="dashboard.html"
+                class="bg-white/10 p-2 rounded-full text-white inline-flex items-center justify-center">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </a>
+            <div class="flex-1">
+                <h1 class="text-white text-lg font-bold leading-tight">DEL → BOM</h1>
+                <p class="text-white/70 text-xs">Oct 12 - Oct 19 • 1 Passenger • Economy</p>
+            </div>
+            <button class="bg-white text-primary px-4 py-2 rounded-full text-sm font-bold shadow-sm">
+                Modify
+            </button>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white/10 border border-white/20 rounded-lg p-3 flex items-center gap-3">
+                <span class="material-symbols-outlined text-white/60">calendar_month</span>
+                <div class="text-white">
+                    <p class="text-[10px] uppercase tracking-wider text-white/50 font-bold">Departure</p>
+                    <p class="text-sm font-medium">Oct 12, 2023</p>
+                </div>
+            </div>
+            <div class="bg-white/10 border border-white/20 rounded-lg p-3 flex items-center gap-3">
+                <span class="material-symbols-outlined text-white/60">person</span>
+                <div class="text-white">
+                    <p class="text-[10px] uppercase tracking-wider text-white/50 font-bold">Class</p>
+                    <p class="text-sm font-medium">Economy</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="px-4 py-6 space-y-4 pb-24">
+        <div class="flex gap-2 overflow-x-auto hide-scrollbar -mx-4 px-4 pb-2">
+            <button
+                class="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 flex-shrink-0">
+                <span class="material-symbols-outlined text-lg">auto_awesome</span>
+                AI Recommended
+            </button>
+            <button
+                class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-5 py-2.5 rounded-full text-sm font-semibold flex-shrink-0">
+                Cheapest
+            </button>
+            <button
+                class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-5 py-2.5 rounded-full text-sm font-semibold flex-shrink-0">
+                Fastest
+            </button>
+            <button
+                class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-5 py-2.5 rounded-full text-sm font-semibold flex-shrink-0">
+                Non-stop
+            </button>
+        </div>
+        <div class="flex flex-col gap-4">
+            <div
+                class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 p-5 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 bg-emerald-ai/10 px-3 py-1.5 rounded-bl-lg flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-emerald-ai text-sm font-bold">trending_down</span>
+                    <span class="text-emerald-ai text-[11px] font-bold uppercase tracking-tight">AI Prediction: Buy
+                        Now</span>
+                </div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 flex items-center justify-center overflow-hidden">
+                        <img class="w-full h-full object-cover" data-alt="Indigo airline logo icon"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBNxSAOSRYhMAF9r7HPGukT1jQqiebRDT769CJD-ptrjfQ2Tx2O8dVG6haKCHdbabf44oWaC52yz_OtS7UoDrOqvPaR07I7pn3VnJoN_Ku8G-yB1K8kcxYEpDOGZHMDjuX_siYhCs-7GUchWkt04K-IrKBsd2jihNHOdUkb1u7iBIVmSzZo-PsFbQP02Veb7v68ALsNakSLJQTnwsT5_ET6BHyW1Rab5D3yWmOToC5uIVGRoKaKYTMv_EXG5XF3CczP92hkYKJtq-0" />
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 leading-none">Indigo</h3>
+                        <p class="text-xs text-slate-500 mt-1">Flight 6E-205 • Airbus A320</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mb-6 px-2">
+                    <div class="text-center">
+                        <p class="text-lg font-bold">06:00</p>
+                        <p class="text-xs text-slate-500 font-medium">DEL</p>
+                    </div>
+                    <div class="flex-1 px-4 flex flex-col items-center">
+                        <p class="text-[10px] text-slate-400 font-bold mb-1">2h 10m</p>
+                        <div class="relative w-full h-[2px] bg-slate-200 dark:bg-slate-700 rounded-full">
+                            <div class="absolute -top-1 left-0 w-2 h-2 rounded-full border-2 border-primary bg-white">
+                            </div>
+                            <div class="absolute -top-1 right-0 w-2 h-2 rounded-full bg-primary"></div>
+                        </div>
+                        <p class="text-[10px] text-primary font-bold mt-1">Non-stop</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-bold">08:10</p>
+                        <p class="text-xs text-slate-500 font-medium">BOM</p>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
+                    <div>
+                        <p class="text-2xl font-black text-slate-900 dark:text-slate-100">₹4,542</p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">Incl. taxes &amp; fees</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">insights</span>
+                            Trend
+                        </button>
+                        <button
+                            class="bg-primary text-white px-6 py-2 rounded-lg text-xs font-bold shadow-md shadow-primary/20">
+                            Book
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-100 dark:border-slate-700 p-5 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 bg-slate-100 dark:bg-slate-700 px-3 py-1.5 rounded-bl-lg flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-slate-500 text-sm font-bold">trending_flat</span>
+                    <span class="text-slate-500 text-[11px] font-bold uppercase tracking-tight">AI: Stable Price</span>
+                </div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 flex items-center justify-center overflow-hidden">
+                        <img class="w-full h-full object-cover" data-alt="Akasa Air logo"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyi9ME2kb9AVNk2Iczo3nhH6V8amCv2U_5NxczWEdP7hlOUMNXXF7ZTiILbEM9eu-m4Ml5d-rRnCqOfF3l68NuFEGyqgiRiwuNnEaC1ga8ZDd4_vPYpMq5res-Xj9cmKkDzJamuE_eDithKCu0L5u69VvSohBmewV5aOX3jdNlf-yUPZ1cek7LCx_HGJ_t3KBCHVXSLwJVq6lbS0B267sUYhm8hqVRPnlZciJ5xE7xZzT7zb7AnwWraTLGYlOkq2x25bItmysgyfaD" />
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 leading-none">Akasa Air</h3>
+                        <p class="text-xs text-slate-500 mt-1">Flight QP-1102 • Boeing 737</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mb-6 px-2">
+                    <div class="text-center">
+                        <p class="text-lg font-bold">05:45</p>
+                        <p class="text-xs text-slate-500 font-medium">DEL</p>
+                    </div>
+                    <div class="flex-1 px-4 flex flex-col items-center">
+                        <p class="text-[10px] text-slate-400 font-bold mb-1">4h 25m</p>
+                        <div class="relative w-full h-[2px] bg-slate-200 dark:bg-slate-700 rounded-full">
+                            <div class="absolute -top-1 left-0 w-2 h-2 rounded-full border-2 border-slate-300 bg-white">
+                            </div>
+                            <div
+                                class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-slate-400">
+                            </div>
+                            <div class="absolute -top-1 right-0 w-2 h-2 rounded-full bg-slate-400"></div>
+                        </div>
+                        <p class="text-[10px] text-slate-500 font-bold mt-1">1 stop (AMD)</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-bold">10:10</p>
+                        <p class="text-xs text-slate-500 font-medium">BOM</p>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
+                    <div>
+                        <p class="text-2xl font-black text-slate-900 dark:text-slate-100">₹3,918</p>
+                        <p class="text-[10px] text-emerald-ai font-bold">Cheapest available</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">insights</span>
+                            Trend
+                        </button>
+                        <button
+                            class="bg-primary text-white px-6 py-2 rounded-lg text-xs font-bold shadow-md shadow-primary/20">
+                            Book
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-slate-800 rounded-lg shadow-sm border-2 border-primary/20 dark:border-primary/40 p-5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-primary px-3 py-1.5 rounded-bl-lg flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-white text-sm font-bold">verified</span>
+                    <span class="text-white text-[11px] font-bold uppercase tracking-tight">AI: Best Match</span>
+                </div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 flex items-center justify-center overflow-hidden">
+                        <img class="w-full h-full object-cover" data-alt="Air India logo with sleek design"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyyIhVd0yDGOdskiNjrOQGXAnuvAbuWizBhcE4hGR-WwK9-3e0pU-IGcrN4FWUr4kxOd-h4mCKlxEMoG5sEednqjO25L-uhPaVFO9w6ZNfABQgy_oaOIIm1i4-EBnWLnE6y27WwFqPmsp3WtcpNl9CXuLUNJBb4ZvR86AbwfQfg_Siv3-RN-PkgS0I_NUzfdfDEe865yqxt0NiKczoo3_4U6yw2jaYf6N5G_Aord7UelSfZubHdUahSWZUduELVtdWZZ6jkJ7Pwu2V" />
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 leading-none">Air India</h3>
+                        <p class="text-xs text-slate-500 mt-1">Flight AI-865 • A350-900</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mb-6 px-2">
+                    <div class="text-center">
+                        <p class="text-lg font-bold">10:00</p>
+                        <p class="text-xs text-slate-500 font-medium">DEL</p>
+                    </div>
+                    <div class="flex-1 px-4 flex flex-col items-center">
+                        <p class="text-[10px] text-slate-400 font-bold mb-1">2h 15m</p>
+                        <div class="relative w-full h-[2px] bg-primary/20 dark:bg-slate-700 rounded-full">
+                            <div class="absolute -top-1 left-0 w-2 h-2 rounded-full border-2 border-primary bg-white">
+                            </div>
+                            <div class="absolute -top-1 right-0 w-2 h-2 rounded-full bg-primary"></div>
+                        </div>
+                        <p class="text-[10px] text-primary font-bold mt-1">Premium Economy</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-bold">12:15</p>
+                        <p class="text-xs text-slate-500 font-medium">BOM</p>
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-slate-50 dark:border-slate-700 flex items-center justify-between">
+                    <div>
+                        <p class="text-2xl font-black text-slate-900 dark:text-slate-100">₹6,200</p>
+                        <div class="flex items-center gap-1">
+                            <span
+                                class="material-symbols-outlined text-emerald-ai text-[12px] font-bold">trending_down</span>
+                            <p class="text-[10px] text-emerald-ai font-bold">Price dropped ₹450 today</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="bg-primary/10 text-primary px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">insights</span>
+                            Trend
+                        </button>
+                        <button
+                            class="bg-primary text-white px-6 py-2 rounded-lg text-xs font-bold shadow-md shadow-primary/20">
+                            Book
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav
+        class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-6 pb-6 pt-3 flex items-center justify-between z-50">
+        <a class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined fill-1">search</span>
+            <span class="text-[10px] font-bold">Search</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+            <span class="material-symbols-outlined">luggage</span>
+            <span class="text-[10px] font-bold">My Trips</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="price_trend.html">
+            <span class="material-symbols-outlined">auto_graph</span>
+            <span class="text-[10px] font-bold">Predictions</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
+    </nav>
+    <div
+        class="fixed bottom-0 left-0 right-0 h-5 bg-white dark:bg-slate-900 flex justify-center items-center pointer-events-none">
+        <div class="w-32 h-1 bg-slate-300 dark:bg-slate-700 rounded-full mb-1"></div>
+    </div>
+
+</body>
+
+</html>

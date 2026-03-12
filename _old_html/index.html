@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Flight Intelligence Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e6d8a",
+                        "primary-dark": "#165268",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#121c20",
+                        "accent-blue": "#1E3A8A",
+                        "accent-indigo": "#4F46E5",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'glow': '0 0 20px rgba(30, 109, 138, 0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom scrollbar hiding for cleaner mobile view */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col justify-between overflow-x-hidden text-slate-900 dark:text-slate-100 font-display">
+<!-- Hero Section / Illustration -->
+<!-- Adapted for mobile: Illustration sits on top -->
+<div class="relative w-full h-[40vh] min-h-[300px] flex-shrink-0 overflow-hidden bg-slate-900">
+<!-- Abstract AI/Flight Data Visualization Background -->
+<div class="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-screen" data-alt="Abstract 3D blue data visualization network nodes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCR8u3hYHwvFq-jC458AgW46uDAcSqiXuNdU9E7rZ12318XFXnduRI9FHRJa1E2e8klHp8iRDKrj0QIpzo46dmxRzsfxTJZa2XozMNtl6plMVEIU9fxK8lBMPCjbDilKL-Ba5LO1pTEN4KxMTkn1uOcXg4R2AGvM6MRlmqVetvetLD4bM0gaj6Yh2cWLWbMLSDLG-fBHzusLdcwM7yuio46damors0NqxV40xEhwYvOF-TSCRxItsFy-HoNcVSR2G4medc4gU7FWUOo');">
+</div>
+<!-- Gradient Overlay for smooth transition -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-background-light dark:to-background-dark"></div>
+<!-- Tech Decorative Elements -->
+<div class="absolute top-8 right-8 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5 animate-pulse">
+<span class="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span>
+<span class="text-[10px] font-medium text-white tracking-wider uppercase">System Online</span>
+</div>
+</div>
+<!-- Login Content Card -->
+<!-- Floating card effect overlapping the hero -->
+<div class="flex-1 -mt-12 px-4 pb-8 z-10 w-full max-w-md mx-auto relative">
+<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-soft p-6 sm:p-8 w-full border border-slate-100 dark:border-slate-700 backdrop-blur-sm">
+<!-- Header Text -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center p-3 bg-primary/10 rounded-xl mb-4 text-primary">
+<span class="material-symbols-outlined text-3xl">flight_takeoff</span>
+</div>
+<h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
+                    AI-Powered Flight Intelligence
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">
+                    Welcome back to the future of travel.
+                </p>
+</div>
+<!-- Login Form -->
+<form class="flex flex-col gap-5">
+<!-- Email Field -->
+<label class="flex flex-col gap-1.5 group">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Email</span>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="w-full pl-11 pr-4 py-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-normal text-base" placeholder="name@example.com" type="email"/>
+</div>
+</label>
+<!-- Password Field -->
+<label class="flex flex-col gap-1.5 group">
+<span class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Password</span>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full pl-11 pr-12 py-3.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 font-normal text-base" placeholder="Enter your password" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</label>
+<!-- Remember Me & Forgot Password -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 checked:border-primary checked:bg-primary transition-all" type="checkbox"/>
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity">check</span>
+</div>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">Remember me</span>
+</label>
+<a class="text-sm font-semibold text-primary hover:text-primary-dark transition-colors" href="#">Forgot Password?</a>
+</div>
+<!-- Submit Button -->
+<a href="dashboard.html" class="mt-2 w-full bg-gradient-to-r from-[#1E3A8A] to-[#4F46E5] hover:opacity-90 active:scale-[0.98] text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-indigo-500/20 transition-all duration-200 flex items-center justify-center gap-2 group">
+    <span>Sign In</span>
+    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform text-[20px]">arrow_forward</span>
+</a>
+</form>
+<!-- Footer / Register -->
+<div class="mt-8 text-center border-t border-slate-100 dark:border-slate-700 pt-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                    Don't have an account? 
+                    <a class="font-bold text-primary hover:text-primary-dark transition-colors ml-1" href="#">Register now</a>
+</p>
+<!-- Trust Badge -->
+<div class="mt-6 flex items-center justify-center gap-2 opacity-60 hover:opacity-100 transition-opacity cursor-help" title="Secured by JSON Web Token">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">verified_user</span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-slate-400">JWT Secure</span>
+</div>
+</div>
+</div>
+<!-- Bottom decorative padding for mobile scroll -->
+<div class="h-8"></div>
+</div>
+</body></html>

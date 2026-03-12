@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Flight Forecaster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+            --alert: #ef4444;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        
+        .input-group.full {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        input, select {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Results Area */
+        .results-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            display: none;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .result-card.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .price-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+
+        .conf-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--alert);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            color: #fca5a5;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .recommendation {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+            border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .loader {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes slideUp { 
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Form Side -->
+        <div class="glass-card">
+            <h1>Predict Your Flight</h1>
+            <p class="subtitle">AI-powered flight forecasting & insights</p>
+
+            <form id="predictionForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Airline</label>
+                        <select id="airline" required>
+                            <option value="Vistara">Vistara</option>
+                            <option value="Air_India">Air India</option>
+                            <option value="Indigo">Indigo</option>
+                            <option value="GO_FIRST">GO FIRST</option>
+                            <option value="SpiceJet">SpiceJet</option>
+                            <option value="AirAsia">AirAsia</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Cabin Class</label>
+                        <select id="flightClass" required>
+                            <option value="Economy">Economy</option>
+                            <option value="Business">Business</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Source City</label>
+                        <select id="source_city" required>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Chennai">Chennai</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Destination City</label>
+                        <select id="destination_city" required>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Chennai">Chennai</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Departure Time</label>
+                        <select id="departure_time" required>
+                            <option value="Early_Morning">Early Morning</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Afternoon">Afternoon</option>
+                            <option value="Evening">Evening</option>
+                            <option value="Night">Night</option>
+                            <option value="Late_Night">Late Night</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Arrival Time</label>
+                        <select id="arrival_time" required>
+                            <option value="Early_Morning">Early Morning</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Afternoon">Afternoon</option>
+                            <option value="Evening">Evening</option>
+                            <option value="Night">Night</option>
+                            <option value="Late_Night">Late Night</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Stops</label>
+                        <select id="stops" required>
+                            <option value="zero">Zero</option>
+                            <option value="one">One</option>
+                            <option value="two_or_more">Two or More</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Duration (Hours)</label>
+                        <input type="number" id="duration" step="0.1" value="2.5" required>
+                    </div>
+
+                    <div class="input-group full">
+                        <label>Days Left Until Flight</label>
+                        <input type="number" id="days_left" value="15" required>
+                    </div>
+                </div>
+
+                <button type="submit">Get Forecast</button>
+            </form>
+        </div>
+
+        <!-- Results Side -->
+        <div class="results-area">
+            <div class="loader" id="loader"></div>
+            
+            <div id="errorBox" class="alert-box" style="border-color: var(--alert); background: rgba(239, 68, 68, 0.1);"></div>
+
+            <div class="result-card glass-card" id="mainResult">
+                <p class="subtitle" style="margin-bottom:0.5rem">Predicted Fare</p>
+                <div class="price-display">₹<span id="predictedPrice">--</span></div>
+                <div class="conf-badge">Confidence: <span id="confScore">--</span>%</div>
+                
+                <div class="alert-box" id="hikeAlert"></div>
+            </div>
+
+            <div class="result-card glass-card recommendation" id="recResult">
+                <p class="subtitle" style="margin-bottom:0.5rem; color:#d8b4fe;">💡 AI Recommendation</p>
+                <div style="font-size: 1.1rem; line-height: 1.5;">
+                    If you book a flight leaving in <strong style="color:white" id="bestDays">--</strong> days, 
+                    the price drops to 
+                    <strong style="color:#a78bfa">₹<span id="bestPrice">--</span></strong> 
+                    (Confidence: <span id="bestConf">--</span>%).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Hide previous results
+            document.getElementById('mainResult').classList.remove('active');
+            document.getElementById('recResult').classList.remove('active');
+            document.getElementById('hikeAlert').style.display = 'none';
+            document.getElementById('errorBox').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+
+            const payload = {
+                airline: document.getElementById('airline').value,
+                source_city: document.getElementById('source_city').value,
+                departure_time: document.getElementById('departure_time').value,
+                stops: document.getElementById('stops').value,
+                arrival_time: document.getElementById('arrival_time').value,
+                destination_city: document.getElementById('destination_city').value,
+                class: document.getElementById('flightClass').value,
+                duration: document.getElementById('duration').value,
+                days_left: document.getElementById('days_left').value
+            };
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await response.json();
+                document.getElementById('loader').style.display = 'none';
+
+                if (!response.ok) {
+                    document.getElementById('errorBox').innerText = data.error || 'Server error';
+                    document.getElementById('errorBox').style.display = 'block';
+                    return;
+                }
+
+                // Populate main result
+                document.getElementById('predictedPrice').innerText = data.predicted_price.toLocaleString('en-IN');
+                document.getElementById('confScore').innerText = data.confidence_score;
+                
+                if (data.alert) {
+                    document.getElementById('hikeAlert').innerText = data.alert;
+                    document.getElementById('hikeAlert').style.display = 'block';
+                }
+
+                // Populate recommendation
+                if (data.recommendation) {
+                    document.getElementById('bestDays').innerText = data.recommendation.best_days_left;
+                    document.getElementById('bestPrice').innerText = data.recommendation.best_price.toLocaleString('en-IN');
+                    document.getElementById('bestConf').innerText = data.recommendation.confidence_score;
+                    setTimeout(() => document.getElementById('recResult').classList.add('active'), 200);
+                }
+
+                setTimeout(() => document.getElementById('mainResult').classList.add('active'), 50);
+
+            } catch (err) {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('errorBox').innerText = "Network error communicating with the server.";
+                document.getElementById('errorBox').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

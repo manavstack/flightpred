@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Price Alert Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e3b8a",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121620",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .ios-switch:checked+.ios-switch-label {
+            background-color: #1e3b8a;
+        }
+
+        .ios-switch:checked+.ios-switch-label::after {
+            transform: translateX(100%);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+    <header
+        class="sticky top-0 z-30 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center justify-between px-4 h-16">
+            <a href="dashboard.html"
+                class="p-2 -ml-2 text-slate-600 dark:text-slate-400 inline-flex items-center justify-center">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+            </a>
+            <h1 class="text-lg font-bold tracking-tight">Price Alerts</h1>
+            <button class="p-2 -mr-2 text-slate-600 dark:text-slate-400">
+                <span class="material-symbols-outlined">account_circle</span>
+            </button>
+        </div>
+    </header>
+    <main class="p-4 space-y-6 max-w-md mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">System Status</span>
+                <div class="flex items-center gap-1.5">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-xs font-medium text-green-600 dark:text-green-400">LIVE</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="p-3 bg-primary/10 rounded-lg">
+                    <span class="material-symbols-outlined text-primary">psychology</span>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold leading-tight">Monitoring Active</h2>
+                    <p class="text-sm text-slate-500">AI scanning 1,200+ sources every 24h</p>
+                </div>
+            </div>
+        </div>
+        <section class="space-y-4">
+            <div class="flex items-center justify-between px-1">
+                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Active Alerts (2)</h3>
+                <span class="text-xs font-medium text-primary">View all</span>
+            </div>
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-black text-primary">HYD</span>
+                            <span class="text-[10px] text-slate-400 uppercase">Hyderabad</span>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">trending_flat</span>
+                        <div class="flex flex-col items-end">
+                            <span class="text-2xl font-black text-primary">DEL</span>
+                            <span class="text-[10px] text-slate-400 text-right uppercase">Delhi</span>
+                        </div>
+                    </div>
+                    <span
+                        class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold rounded uppercase">Active</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <div class="flex-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Price
+                                Threshold</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3 text-slate-400">₹</span>
+                                <input
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-2 pl-7 pr-3 text-sm font-bold focus:ring-2 focus:ring-primary/20"
+                                    type="number" value="4000" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <label
+                                class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Notifications</label>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input checked="" class="sr-only peer" type="checkbox" />
+                                <div
+                                    class="w-11 h-6 bg-slate-200 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div
+                        class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <div class="flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>Added Oct 12</span>
+                        </div>
+                        <button class="text-slate-400 hover:text-slate-600">
+                            <span class="material-symbols-outlined text-[18px]">more_horiz</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-black text-primary">BLR</span>
+                            <span class="text-[10px] text-slate-400 uppercase">Bangalore</span>
+                        </div>
+                        <span class="material-symbols-outlined text-slate-300">trending_flat</span>
+                        <div class="flex flex-col items-end">
+                            <span class="text-2xl font-black text-primary">COK</span>
+                            <span class="text-[10px] text-slate-400 text-right uppercase">Kochi</span>
+                        </div>
+                    </div>
+                    <span
+                        class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold rounded uppercase">Active</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <div class="flex-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Price
+                                Threshold</label>
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3 text-slate-400">₹</span>
+                                <input
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-lg py-2 pl-7 pr-3 text-sm font-bold focus:ring-2 focus:ring-primary/20"
+                                    type="number" value="3200" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <label
+                                class="text-[10px] font-bold text-slate-400 uppercase mb-1 block">Notifications</label>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input class="sr-only peer" type="checkbox" />
+                                <div
+                                    class="w-11 h-6 bg-slate-200 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div
+                        class="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+                        <div class="flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            <span>Added Oct 20</span>
+                        </div>
+                        <button class="text-slate-400 hover:text-slate-600">
+                            <span class="material-symbols-outlined text-[18px]">more_horiz</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="space-y-4 opacity-70">
+            <div class="flex items-center justify-between px-1">
+                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-widest">Expired Alerts (1)</h3>
+            </div>
+            <div class="bg-white/60 dark:bg-slate-900/40 rounded-xl p-5 border border-slate-200 dark:border-slate-800">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="flex items-center gap-3">
+                        <span class="text-lg font-bold">MAA</span>
+                        <span class="material-symbols-outlined text-slate-400 text-sm">trending_flat</span>
+                        <span class="text-lg font-bold">GOI</span>
+                    </div>
+                    <span
+                        class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold rounded uppercase">Expired</span>
+                </div>
+                <div class="flex justify-between items-center text-xs text-slate-400">
+                    <span>Threshold: ₹2,800</span>
+                    <span>Expired 2 days ago</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <button
+        class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center z-40 active:scale-95 transition-transform">
+        <span class="material-symbols-outlined text-3xl">add</span>
+    </button>
+    <nav
+        class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 py-2 pb-8 z-50">
+        <div class="flex justify-between items-center max-w-md mx-auto">
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="dashboard.html">
+                <span class="material-symbols-outlined">explore</span>
+                <span class="text-[10px] font-medium">Explore</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+                <span class="material-symbols-outlined">flight_takeoff</span>
+                <span class="text-[10px] font-medium">Bookings</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                <span class="material-symbols-outlined"
+                    style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+                <span class="text-[10px] font-bold">Alerts</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="price_trend.html">
+                <span class="material-symbols-outlined">auto_graph</span>
+                <span class="text-[10px] font-medium">Insights</span>
+            </a>
+            <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="text-[10px] font-medium">Settings</span>
+            </a>
+        </div>
+    </nav>
+</body>
+
+</html>

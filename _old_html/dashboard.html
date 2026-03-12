@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Indian User Intelligence Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e3b8a",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121620",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+    <div class="relative flex min-h-screen w-full flex-col pb-24">
+        <header
+            class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pt-6 pb-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="size-10 rounded-full border-2 border-primary/20 p-0.5 overflow-hidden">
+                        <img alt="User Profile" class="h-full w-full rounded-full object-cover"
+                            data-alt="Professional male user profile picture"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNlyLG44KVmKOQ5gYdYAOrKBrnraSv1Q6Awx0SdwPIhu0BbRoiejxcfvbppgop0iTeikMNM4SHJ3Kw01y6homscHUMErt72mgpLtXnlmGDxUhZJ2NesQsxo1hYzvZtz4kkvnY5wiN6285GWNFBANw7DOnvZi-1o8vI1zok9ReF1AJEbNClPEo8HxyTjpx6AW0Hz2sCs6gldzFfDxCvilc5RY66Bj0jsO1OcCdU3DHabI9N3isZtlErcEUtYbVL10q1gfDx47c2-XxM" />
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Intelligence Hub</p>
+                        <h1 class="text-xl font-bold text-slate-900 dark:text-white">Arjun Kapoor</h1>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="flex size-10 items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700">
+                        <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">search</span>
+                    </button>
+                    <button
+                        class="flex size-10 items-center justify-center rounded-full bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 relative">
+                        <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">notifications</span>
+                        <span class="absolute top-2 right-2 size-2 bg-primary rounded-full ring-2 ring-white"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 px-4 space-y-6">
+            <div class="grid grid-cols-2 gap-4">
+                <a href="price_Alert.html"
+                    class="flex flex-col gap-3 rounded-xl p-5 bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow">
+                    <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined">notifications_active</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Active Alerts</p>
+                        <p class="text-2xl font-bold leading-tight mt-0.5">12</p>
+                    </div>
+                </a>
+                <div
+                    class="flex flex-col gap-3 rounded-xl p-5 bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
+                    <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined">map</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Saved Routes</p>
+                        <p class="text-2xl font-bold leading-tight mt-0.5">08</p>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-col gap-3 rounded-xl p-5 bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">
+                    <div class="flex size-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+                        <span class="material-symbols-outlined">savings</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Total Savings</p>
+                        <div class="flex items-baseline gap-2">
+                            <p class="text-xl font-bold leading-tight mt-0.5">₹12,500</p>
+                        </div>
+                        <span class="text-[10px] font-bold text-emerald-600">Lifetime</span>
+                    </div>
+                </div>
+                <a href="price_trend.html"
+                    class="flex flex-col gap-3 rounded-xl p-5 bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-shadow">
+                    <div class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <span class="material-symbols-outlined">auto_graph</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-xs font-medium uppercase tracking-tight">Predictions</p>
+                        <p class="text-2xl font-bold leading-tight mt-0.5">145</p>
+                    </div>
+                </a>
+            </div>
+            <section class="space-y-4">
+                <h3 class="text-lg font-bold tracking-tight px-1">AI Intelligence Profile</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div
+                        class="rounded-xl p-6 bg-primary dark:bg-primary/20 text-white flex items-center justify-between shadow-lg shadow-primary/20">
+                        <div class="space-y-1">
+                            <p class="text-primary-foreground/80 text-sm font-medium opacity-80">Prediction Accuracy</p>
+                            <p class="text-3xl font-bold">87%</p>
+                            <p class="text-xs text-primary-foreground/60 opacity-60">High reliability score</p>
+                        </div>
+                        <div class="relative flex items-center justify-center size-20">
+                            <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="stroke-current text-white/20" cx="18" cy="18" fill="none" r="16"
+                                    stroke-width="3"></circle>
+                                <circle class="stroke-current text-white" cx="18" cy="18" fill="none" r="16"
+                                    stroke-dasharray="87, 100" stroke-linecap="round" stroke-width="3"></circle>
+                            </svg>
+                            <span class="absolute text-[10px] font-bold">AI</span>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <p class="text-sm font-bold">Popular Holiday Trends</p>
+                            <span class="material-symbols-outlined text-slate-400">trending_up</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="size-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                                        <span
+                                            class="material-symbols-outlined text-sm text-orange-600 dark:text-orange-400">beach_access</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold">Goa</p>
+                                        <p class="text-[10px] text-emerald-600 font-medium">Price Drop: 15%</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-slate-600 dark:text-slate-400">₹4,200</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="size-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                        <span
+                                            class="material-symbols-outlined text-sm text-blue-600 dark:text-blue-400">landscape</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold">Srinagar</p>
+                                        <p class="text-[10px] text-emerald-600 font-medium">Price Drop: 8%</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-slate-600 dark:text-slate-400">₹6,800</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div
+                class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <p class="text-sm font-bold">Recent Route Predictions</p>
+                    <span class="material-symbols-outlined text-slate-400">more_horiz</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="size-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-primary">flight_takeoff</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold">DEL → BLR</p>
+                                <p class="text-[10px] text-slate-500">Wait 2 days</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-600">-₹1,200</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="size-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-sm text-primary">flight_takeoff</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold">MAA → CCU</p>
+                                <p class="text-[10px] text-slate-500">Book Now</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400">Best Price</span>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h4 class="text-sm font-bold">Total Search Volume</h4>
+                        <p class="text-xs text-slate-500">Domestic market analysis</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-lg font-bold">2,840</p>
+                        <p class="text-[10px] text-emerald-600 font-bold">+12% vs last month</p>
+                    </div>
+                </div>
+                <div class="flex items-end justify-between gap-1 h-24">
+                    <div class="flex-1 bg-primary/10 rounded-t-sm h-12"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-sm h-16"></div>
+                    <div class="flex-1 bg-primary/20 rounded-t-sm h-20"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-sm h-14"></div>
+                    <div class="flex-1 bg-primary/40 rounded-t-sm h-24"></div>
+                    <div class="flex-1 bg-primary/10 rounded-t-sm h-18"></div>
+                    <div class="flex-1 bg-primary/60 rounded-t-sm h-22"></div>
+                    <div class="flex-1 bg-primary rounded-t-sm h-24"></div>
+                </div>
+            </div>
+        </main>
+        <nav
+            class="fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-6 pb-8 pt-3 safe-area-bottom">
+            <div class="flex justify-between items-center max-w-md mx-auto">
+                <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                    <span class="material-symbols-outlined fill-1">dashboard</span>
+                    <span class="text-[10px] font-medium">Dashboard</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 text-slate-400" href="price_Alert.html">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="text-[10px] font-medium">Alerts</span>
+                </a>
+                <div class="relative -mt-8">
+                    <a href="flight_search.html"
+                        class="flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/30 border-4 border-background-light dark:border-background-dark active:scale-95 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">add</span>
+                    </a>
+                </div>
+                <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+                    <span class="material-symbols-outlined">bookmark</span>
+                    <span class="text-[10px] font-medium">Saved</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <span class="text-[10px] font-medium">Profile</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+</body>
+
+</html>
