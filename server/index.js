@@ -105,11 +105,11 @@ async function startServer() {
         console.log('  PUT    /api/alerts/:id');
         console.log('  DELETE /api/alerts/:id');
         console.log('  GET    /api/dashboard/stats');
-    console.log('  GET    /api/fare-calendar/DEL-BOM?month=2026-04');
-    console.log('  GET    /api/budget-finder?budget=5000&from=DEL');
-    console.log('  GET    /api/advisor/analyze');
-    console.log('  GET    /api/predictions/logs');
-    console.log('  GET    /api/health');
+        console.log('  GET    /api/fare-calendar/DEL-BOM?month=2026-04');
+        console.log('  GET    /api/budget-finder?budget=5000&from=DEL');
+        console.log('  GET    /api/advisor/analyze');
+        console.log('  GET    /api/predictions/logs');
+        console.log('  GET    /api/health');
         console.log('  ═══════════════════════════════════');
         console.log('  Demo login: arjun@flyai.com / demo123');
         console.log('');
